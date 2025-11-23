@@ -272,18 +272,7 @@ function App() {
       setTimeout(() => {
         const firstError = Object.keys(formErrors)[0]
         if (firstError) {
-          if (firstError === 'attendance') {
-            // Для attendance скроллим к группе радио-кнопок
-            const attendanceField = document.querySelector('[name="attendance"]')
-            if (attendanceField) {
-              const formGroup = attendanceField.closest('.form-group')
-              if (formGroup) {
-                formGroup.scrollIntoView({ behavior: 'smooth', block: 'center' })
-              }
-            }
-          } else {
             scrollToError(firstError)
-          }
         }
       }, 100)
       return
@@ -304,6 +293,7 @@ function App() {
       formDataToSend.append('_subject', 'Новая анкета от гостя')
       formDataToSend.append('_cc', 'semeenowa.alexandra@yandex.ru') // Копия на второй email
       formDataToSend.append('_replyto', formData.phone) // Телефон для ответа
+      formDataToSend.append('_format', 'plain')
       formDataToSend.append('name', formData.name)
       formDataToSend.append('phone', formData.phone)
       formDataToSend.append('attendance', formData.attendance === 'yes' ? 'Я приду/мы придём' : 'К сожалению, меня не будет')
@@ -704,7 +694,7 @@ function App() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="+7 (900) 999 99 99"
+                  placeholder="+7 (999) 999 99 99"
                   className={formErrors.phone ? 'error' : ''}
                   required 
                 />
@@ -760,21 +750,21 @@ function App() {
                   <input 
                     type="checkbox" 
                     name="drinks" 
-                    value="wine"
-                    checked={formData.drinks.includes('wine')}
+                    value="whitewine"
+                    checked={formData.drinks.includes('whitewine')}
                     onChange={handleInputChange}
                   />
-                  <span>Вино</span>
+                  <span>Белое вино</span>
                 </label>
                 <label className="checkbox-label">
                   <input 
                     type="checkbox" 
                     name="drinks" 
-                    value="whiskey"
-                    checked={formData.drinks.includes('whiskey')}
+                    value="redwine"
+                    checked={formData.drinks.includes('redwine')}
                     onChange={handleInputChange}
                   />
-                  <span>Виски</span>
+                  <span>Красное вино</span>
                 </label>
                 <label className="checkbox-label">
                   <input 

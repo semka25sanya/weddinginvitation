@@ -263,9 +263,9 @@ section.visible .fade-in-up {
 
 .section-image {
   width: 100%;
-  height: 120%;
+  height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   display: block;
   filter: brightness(0.95);
 }
@@ -517,7 +517,7 @@ section.visible .fade-in-up {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+  background: rgba(147, 179, 202, 0.7);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
   font-size: 1.8rem;
@@ -547,10 +547,14 @@ section.visible .fade-in-up {
   .wishes {
     padding-bottom: 80px;
   }
+
+  .countdown-bg-image {
+    object-position: top !important;
+  }
 }
 
 .slider-arrow:hover:not(:disabled) {
-  background: linear-gradient(135deg, #088395 0%, #05bfdb 100%);
+  background: rgba(212, 228, 243, 0.8);
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(10, 77, 104, 0.3);
   border-color: rgba(255, 255, 255, 0.5);
