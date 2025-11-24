@@ -43,6 +43,15 @@ function App() {
   // Дата свадьбы: 7 августа 2026, 18:00
   const weddingDate = new Date('2026-08-07T18:00:00').getTime()
 
+  const drinkLabels = {
+    cognac: 'коньяк',
+    redwine: 'красное вино',
+    whitewine: 'белое вино',
+    champagne: 'шампанское',
+    vodka: 'водка',
+    'non-alcoholic': 'безалкогольные напитки'
+  };
+
   // Плавная прокрутка для навигации
   const handleNavClick = (e, targetId) => {
     e.preventDefault()
@@ -222,11 +231,11 @@ function App() {
 
   const validateForm = () => {
     const errors = {}
-    
-    if (!formData.name || !formData.name.trim()) {
+  
+    if (!formData.name?.trim()) {
       errors.name = 'Поле обязательно для заполнения'
     }
-    if (!formData.phone || !formData.phone.trim()) {
+    if (!formData.phone?.trim()) {
       errors.phone = 'Поле обязательно для заполнения'
     } else if (!validatePhone(formData.phone)) {
       errors.phone = 'Введите корректный номер телефона'
@@ -234,22 +243,28 @@ function App() {
     if (!formData.attendance) {
       errors.attendance = 'Поле обязательно для заполнения'
     }
-    const hasDrinks = formData.drinks.length > 0 || (formData.drinks.includes('other') && formData.drinksOther && formData.drinksOther.trim())
+  
+    const hasDrinks = formData.drinks.length > 0 || 
+      (formData.drinks.includes('other') && formData.drinksOther?.trim())
+    
     if (!hasDrinks) {
       errors.drinks = 'Выберите хотя бы один вариант или укажите свой'
     }
-    if (formData.drinks.includes('other') && (!formData.drinksOther || !formData.drinksOther.trim())) {
+    if (formData.drinks.includes('other') && !formData.drinksOther?.trim()) {
       errors.drinksOther = 'Укажите свой вариант напитка'
     }
+  
     if (!formData.food) {
       errors.food = 'Поле обязательно для заполнения'
     }
     if (!formData.transfer) {
       errors.transfer = 'Поле обязательно для заполнения'
     }
-    
+  
+    // ✅ сетаем ошибки — но НЕ полагаемся на них сразу
     setFormErrors(errors)
-    return Object.keys(errors).length === 0
+    
+    return errors // ← возвращаем для использования в handleSubmit
   }
 
   const scrollToError = (fieldName) => {
@@ -264,24 +279,39 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
-    // Валидация формы
-    const isValid = validateForm()
+
+    const errors = validateForm()
+    const isValid = Object.keys(errors).length === 0
+  
     if (!isValid) {
-      // Скроллим к первому полю с ошибкой
+      // Скроллим к первому полю с ошибкой — используем errors, а не formErrors!
       setTimeout(() => {
-        const firstError = Object.keys(formErrors)[0]
+        const firstError = Object.keys(errors)[0]
         if (firstError) {
+          // Особый случай для attendance (радио-группа)
+          if (firstError === 'attendance') {
+            const attendanceField = document.querySelector('[name="attendance"]')
+            const formGroup = attendanceField?.closest('.form-group')
+            formGroup?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          } else {
             scrollToError(firstError)
+          }
         }
       }, 100)
       return
     }
+  
     
     // Формируем данные для отправки
     const drinksText = formData.drinks.length > 0 
-      ? formData.drinks.filter(d => d !== 'other').join(', ') + (formData.drinksOther ? `, другое: ${formData.drinksOther}` : '')
-      : formData.drinksOther || 'Не указано'
+    ? formData.drinks
+        .filter(d => d !== 'other')
+        .map(d => drinkLabels[d] || d) // ← переводим, fallback — оставляем как есть
+        .join(', ') + 
+      (formData.drinks.includes('other') && formData.drinksOther?.trim()
+        ? `, другое: ${formData.drinksOther.trim()}`
+        : '')
+    : formData.drinksOther?.trim() || 'Не указано';
     
     const message = `Новая анкета от гостя:\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nПрисутствие: ${formData.attendance === 'yes' ? 'Я приду/мы придём' : 'К сожалению, меня не будет'}\nТрансфер: ${formData.transfer === 'yes' ? 'Да' : formData.transfer === 'no' ? 'Нет' : 'Не указано'}\nНапитки: ${drinksText}\nБлюда: ${formData.food === 'meat' ? 'Мясо' : formData.food === 'fish' ? 'Рыба' : 'Не указано'}`
     
@@ -293,12 +323,6 @@ function App() {
       formDataToSend.append('_subject', 'Новая анкета от гостя')
       formDataToSend.append('_cc', 'semeenowa.alexandra@yandex.ru') // Копия на второй email
       formDataToSend.append('_replyto', formData.phone) // Телефон для ответа
-      formDataToSend.append('name', formData.name)
-      formDataToSend.append('phone', formData.phone)
-      formDataToSend.append('attendance', formData.attendance === 'yes' ? 'Я приду/мы придём' : 'К сожалению, меня не будет')
-      formDataToSend.append('transfer', formData.transfer === 'yes' ? 'Да' : formData.transfer === 'no' ? 'Нет' : 'Не указано')
-      formDataToSend.append('drinks', drinksText)
-      formDataToSend.append('food', formData.food === 'meat' ? 'Мясо' : formData.food === 'fish' ? 'Рыба' : 'Не указано')
       formDataToSend.append('message', message)
       
       const response = await fetch('https://formsubmit.co/ajax/semeenowa.alexandra@gmail.com', {
@@ -666,7 +690,7 @@ function App() {
           <p className="rsvp-deadline">
             <strong>Пожалуйста, заполните данную форму до 31 декабря 2025 года.</strong>
           </p>
-          <form className="rsvp-form" onSubmit={handleSubmit}>
+          <form className="rsvp-form" onSubmit={handleSubmit} noValidate>
             <div className="form-group">
               <label className={formErrors.name ? 'error-label' : ''}>Ваше имя и фамилия</label>
               <p className="form-hint">Если Вы будете с парой или семьей - укажите все имена через запятую</p>
