@@ -293,7 +293,6 @@ function App() {
       formDataToSend.append('_subject', 'Новая анкета от гостя')
       formDataToSend.append('_cc', 'semeenowa.alexandra@yandex.ru') // Копия на второй email
       formDataToSend.append('_replyto', formData.phone) // Телефон для ответа
-      formDataToSend.append('_format', 'plain')
       formDataToSend.append('name', formData.name)
       formDataToSend.append('phone', formData.phone)
       formDataToSend.append('attendance', formData.attendance === 'yes' ? 'Я приду/мы придём' : 'К сожалению, меня не будет')
