@@ -325,7 +325,7 @@ function App() {
       formDataToSend.append('_replyto', formData.phone) // Телефон для ответа
       formDataToSend.append('message', message)
       
-      const response = await fetch('https://formsubmit.co/ajax/semeenowa.alexandra@gmail.com', {
+      const response = await fetch('atulisovaa@gmail.com', {
         method: 'POST',
         body: formDataToSend
       })
@@ -420,6 +420,7 @@ function App() {
           <p className="program-intro fade-in-up">
             День нашей свадьбы может стать одним из самых приятных дней не только для нас, но и для Вас!
           </p>
+          
           <ul className="program-list">
             <li className="program-item fade-in-up" style={{ animationDelay: '0.1s' }}>
               <span className="program-icon">
@@ -430,8 +431,14 @@ function App() {
                   <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="#2c3e50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </span>
-              <span className="program-time">14:00</span>
+              <span className="program-time">14:30</span>
+              <div>
               <span className="program-event">Сбор гостей</span>
+              <p className="transfer-text fade-in-up">
+            Дорогие гости, для вашего удобства будет организован трансфер от и до места проведения мероприятия
+          </p>
+              </div>
+              
             </li>
             <li className="program-item fade-in-up" style={{ animationDelay: '0.2s' }}>
               <span className="program-icon">
@@ -444,7 +451,7 @@ function App() {
               <span className="program-icon">
                 <img src={foodIcon} alt="Начало свадебного банкета" style={{ width: '32px', height: '32px' }} />
               </span>
-              <span className="program-time">15:40</span>
+              <span className="program-time">16:00</span>
               <span className="program-event">Начало свадебного банкета</span>
             </li>
             <li className="program-item fade-in-up" style={{ animationDelay: '0.4s' }}>
@@ -532,63 +539,32 @@ function App() {
                 className="color-slider"
                 style={{ transform: `translateX(${sliderPosition}px)` }}
               >
-                    <div className="color-card" style={{ backgroundColor: '#C69994' }}>
+                                    <div className="color-card" style={{ backgroundColor: '#D4E4F3' }}>
                       <div className="color-card-frame">
-                        <div className="color-block" style={{ backgroundColor: '#C69994' }}></div>
+                        <div className="color-block" style={{ backgroundColor: '#D4E4F3' }}></div>
                         <div className="color-text-block">
-                          <div className="color-name">Blush rose</div>
-                          <div className="color-code">16-1325 TCX </div>
+                          <div className="color-name">Ice blue</div>
+                          <div className="color-code">13-4108 TCX</div>
                           <div className="color-brand">Mes couleurs</div>
                         </div>
                       </div>
                     </div>
-                    <div className="color-card" style={{ backgroundColor: '#DABAB5' }}>
+                    <div className="color-card" style={{ backgroundColor: '#bbcbdb' }}>
                       <div className="color-card-frame">
-                        <div className="color-block" style={{ backgroundColor: '#DABAB5' }}></div>
+                        <div className="color-block" style={{ backgroundColor: '#bbcbdb' }}></div>
                         <div className="color-text-block">
-                          <div className="color-name">Rosy</div>
-                          <div className="color-code">15-1520 TCX </div>
+                          <div className="color-name">Powder Blue</div>
+                          <div className="color-code">14-4111 TCX</div>
                           <div className="color-brand">Mes couleurs</div>
                         </div>
                       </div>
                     </div>
-                    <div className="color-card" style={{ backgroundColor: '#E9D8E8' }}>
+                    <div className="color-card" style={{ backgroundColor: '#d6e3ec' }}>
                       <div className="color-card-frame">
-                        <div className="color-block" style={{ backgroundColor: '#E9D8E8' }}></div>
+                        <div className="color-block" style={{ backgroundColor: '#d6e3ec' }}></div>
                         <div className="color-text-block">
-                          <div className="color-name">Lavender mist</div>
-                          <div className="color-code">13-3207 TCX</div>
-                          <div className="color-brand">Mes couleurs</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="color-card" style={{ backgroundColor: '#F3D7CC' }}>
-                      <div className="color-card-frame">
-                        <div className="color-block" style={{ backgroundColor: '#F3D7CC' }}></div>
-                        <div className="color-text-block">
-                          <div className="color-name">Blush peach</div>
-                          <div className="color-code">13-1114 TCX</div>
-                          <div className="color-brand">Mes couleurs</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="color-card" style={{ backgroundColor: '#D1D9CC' }}>
-                      <div className="color-card-frame">
-                        <div className="color-block" style={{ backgroundColor: '#D1D9CC' }}></div>
-                        <div className="color-text-block">
-                          <div className="color-name">Cabbage white</div>
-                          <div className="color-code">14-0410 TCX</div>
-                          <div className="color-brand">Mes couleurs</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="color-card" style={{ backgroundColor: '#BFCABA' }}>
-                      <div className="color-card-frame">
-                        <div className="color-block" style={{ backgroundColor: '#BFCABA' }}></div>
-                        <div className="color-text-block">
-                          <div className="color-name">Borrowed light</div>
-                          <div className="color-code">17-0412 TCX</div>
+                          <div className="color-name">Winter Sky</div>
+                          <div className="color-code">12-4308 TCX</div>
                           <div className="color-brand">Mes couleurs</div>
                         </div>
                       </div>
@@ -614,26 +590,6 @@ function App() {
                       </div>
                     </div>
 
-                    <div className="color-card" style={{ backgroundColor: '#D4E4F3' }}>
-                      <div className="color-card-frame">
-                        <div className="color-block" style={{ backgroundColor: '#D4E4F3' }}></div>
-                        <div className="color-text-block">
-                          <div className="color-name">Ice blue</div>
-                          <div className="color-code">13-4108 TCX</div>
-                          <div className="color-brand">Mes couleurs</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="color-card" style={{ backgroundColor: '#93B3CA' }}>
-                      <div className="color-card-frame">
-                        <div className="color-block" style={{ backgroundColor: '#93B3CA' }}></div>
-                        <div className="color-text-block">
-                          <div className="color-name">Steel blue</div>
-                          <div className="color-code">16-4120 TCX</div>
-                          <div className="color-brand">Mes couleurs</div>
-                        </div>
-                      </div>
-                    </div>
                     <div className="color-card" style={{ backgroundColor: '#F3EBD8' }}>
                       <div className="color-card-frame">
                         <div className="color-block" style={{ backgroundColor: '#F3EBD8' }}></div>
@@ -648,7 +604,7 @@ function App() {
                       <div className="color-card-frame">
                         <div className="color-block" style={{ backgroundColor: '#F3EEEA' }}></div>
                         <div className="color-text-block">
-                          <div className="color-name">Soft ivory</div>
+                          <div className="color-name">Vanilla Cream</div>
                           <div className="color-code">11-0605 TCX</div>
                           <div className="color-brand">Mes couleurs</div>
                         </div>
@@ -688,7 +644,7 @@ function App() {
             Просим ответить на пару важных для нас вопросов. Ответы помогут нам подготовить праздник по высшему разряду!
           </p>
           <p className="rsvp-deadline">
-            <strong>Пожалуйста, заполните данную форму до 31 декабря 2025 года.</strong>
+            <strong>Пожалуйста, заполните данную форму до 5 января 2026 года.</strong>
           </p>
           <form className="rsvp-form" onSubmit={handleSubmit} noValidate>
             <div className="form-group">
@@ -918,25 +874,19 @@ function App() {
             можете смело обращаться к нашему организатору:
           </p>
           <p className="contact-name">Анастасия</p>
-          <a href="tel:+79502586674" className="contact-phone">+7 (950) 258-66-74</a>
+          <a href="tel:+79992385864" className="contact-phone">+7 (999) 238-58-64</a>
+          <p className="telegram-text">
+            Присоединяйтесь к группе в телеграме, <br />там будет публиковаться акутальная информация:
+          </p>
           <div className="contact-social">
-            <a href="https://t.me/alexa_semyonova" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://t.me/+_SccRhgFnJ81ZTQy" target="_blank" rel="noopener noreferrer" className="social-link">
               <img src={telegramIcon} alt="Telegram" style={{ width: '32px', height: '32px' }} />
-            </a>
-            <a href="https://www.instagram.com/alexa_semyonova" target="_blank" rel="noopener noreferrer" className="social-link">
-              <img src={instagramIcon} alt="Instagram" style={{ width: '32px', height: '32px' }} />
-            </a>
-            <a href="https://wa.me/79014861857" target="_blank" rel="noopener noreferrer" className="social-link">
-              <img src={whatsappIcon} alt="WhatsApp" style={{ width: '32px', height: '32px' }} />
             </a>
           </div>
         </div>
       </section>
 
-      {/* Image Section 4 */}
-      {/* <section className="image-section">
-        <img src={img5} alt="Свадебное фото" className="section-image" />
-      </section> */}
+
 
       {/* Countdown Timer */}
       <section className={`countdown ${visibleSections.has('countdown') ? 'visible' : ''}`} id="countdown">

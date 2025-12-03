@@ -442,6 +442,13 @@ section.visible .fade-in-up {
   flex: 1;
 }
 
+.transfer-text {
+  font-size: 0.6rem;
+  color: #666;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-top: 2px;
+}
 /* Wishes Section */
 .wishes {
   padding: 2rem 0;
@@ -662,7 +669,7 @@ section.visible .fade-in-up {
 
 .rsvp-deadline {
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: #888;
   margin-bottom: 3rem;
   font-weight: 300;
@@ -880,6 +887,14 @@ section.visible .fade-in-up {
   font-weight: 300;
 }
 
+.telegram-text {
+  font-size: 0.7rem;
+  line-height: 1.8;
+  color: #555;
+  font-weight: 300;
+  margin-top: 1.5rem;
+}
+
 .contact-name {
   font-size: 1.3rem;
   font-weight: 400;
@@ -904,7 +919,7 @@ section.visible .fade-in-up {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .social-link {
@@ -1210,7 +1225,7 @@ section.visible .fade-in-up {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
   }
 
   .program-item::before {
@@ -1449,6 +1464,7 @@ section.visible .fade-in-up {
     margin-bottom: 2rem;
     line-height: 1.6;
   }
+
 
   .program-item {
     flex-direction: column;
