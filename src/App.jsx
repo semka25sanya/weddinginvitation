@@ -321,11 +321,11 @@ function App() {
       
       const formDataToSend = new FormData()
       formDataToSend.append('_subject', 'Новая анкета от гостя')
-      formDataToSend.append('_cc', 'semeenowa.alexandra@yandex.ru') // Копия на второй email
+      formDataToSend.append('_cc', 'atulisovaa@gmail.com') // Копия на второй email
       formDataToSend.append('_replyto', formData.phone) // Телефон для ответа
       formDataToSend.append('message', message)
       
-      const response = await fetch('https://formsubmit.co/ajax/atulisovaa@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/semeenowa.alexandra@yandex.ru', {
         method: 'POST',
         body: formDataToSend
       })
