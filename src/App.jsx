@@ -325,7 +325,7 @@ function App() {
       formDataToSend.append('_replyto', formData.phone) // Телефон для ответа
       formDataToSend.append('message', message)
       
-      const response = await fetch('atulisovaa@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/atulisovaa@gmail.com', {
         method: 'POST',
         body: formDataToSend
       })
