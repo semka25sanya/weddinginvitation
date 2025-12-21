@@ -9,8 +9,6 @@ import ceremonyIcon from '../siteimages/brideandgroom.svg'
 import foodIcon from '../siteimages/Foodsvg.svg'
 import nightmodeIcon from '../siteimages/Nightmode.svg'
 import telegramIcon from '../siteimages/Telegram.svg'
-import instagramIcon from '../siteimages/Instagram.svg'
-import whatsappIcon from '../siteimages/WhatsApp.svg'
 
 function App() {
   const [formData, setFormData] = useState({
@@ -230,42 +228,52 @@ function App() {
   }
 
   const validateForm = () => {
-    const errors = {}
+    const errors = {};
   
+    // Обязательно: имя всегда проверяется
     if (!formData.name?.trim()) {
-      errors.name = 'Поле обязательно для заполнения'
+      errors.name = 'Поле обязательно для заполнения';
     }
+  
+    // Если пользователь НЕ придёт — больше ничего не проверяем
+    if (formData.attendance === 'no') {
+      setFormErrors(errors);
+      return errors;
+    }
+  
+    // Если пользователь придёт — проверяем остальные поля
+  
     if (!formData.phone?.trim()) {
-      errors.phone = 'Поле обязательно для заполнения'
+      errors.phone = 'Поле обязательно для заполнения';
     } else if (!validatePhone(formData.phone)) {
-      errors.phone = 'Введите корректный номер телефона'
+      errors.phone = 'Введите корректный номер телефона';
     }
+  
     if (!formData.attendance) {
-      errors.attendance = 'Поле обязательно для заполнения'
+      errors.attendance = 'Поле обязательно для заполнения';
     }
   
     const hasDrinks = formData.drinks.length > 0 || 
-      (formData.drinks.includes('other') && formData.drinksOther?.trim())
-    
+      (formData.drinks.includes('other') && formData.drinksOther?.trim());
+  
     if (!hasDrinks) {
-      errors.drinks = 'Выберите хотя бы один вариант или укажите свой'
+      errors.drinks = 'Выберите хотя бы один вариант или укажите свой';
     }
     if (formData.drinks.includes('other') && !formData.drinksOther?.trim()) {
-      errors.drinksOther = 'Укажите свой вариант напитка'
+      errors.drinksOther = 'Укажите свой вариант напитка';
     }
   
     if (!formData.food) {
-      errors.food = 'Поле обязательно для заполнения'
-    }
-    if (!formData.transfer) {
-      errors.transfer = 'Поле обязательно для заполнения'
+      errors.food = 'Поле обязательно для заполнения';
     }
   
-    // ✅ сетаем ошибки — но НЕ полагаемся на них сразу
-    setFormErrors(errors)
-    
-    return errors // ← возвращаем для использования в handleSubmit
-  }
+    if (!formData.transfer) {
+      errors.transfer = 'Поле обязательно для заполнения';
+    }
+  
+    setFormErrors(errors);
+    return errors;
+  };
 
   const scrollToError = (fieldName) => {
     const field = document.querySelector(`[name="${fieldName}"]`)
@@ -644,7 +652,7 @@ function App() {
             Просим ответить на пару важных для нас вопросов. Ответы помогут нам подготовить праздник по высшему разряду!
           </p>
           <p className="rsvp-deadline">
-            <strong>Пожалуйста, заполните данную форму до 5 января 2026 года.</strong>
+            <strong>Пожалуйста, заполните данную форму до 21 января 2026 года.</strong>
           </p>
           <form className="rsvp-form" onSubmit={handleSubmit} noValidate>
             <div className="form-group">
