@@ -884,7 +884,7 @@ function App() {
           <p className="contact-name">Анастасия</p>
           <a href="tel:+79992385864" className="contact-phone">+7 (999) 238-58-64</a>
           <p className="telegram-text">
-            Присоединяйтесь к группе в телеграме, <br />там будет публиковаться акутальная информация:
+            Присоединяйтесь к группе в телеграме, <br />там будет публиковаться актуальная информация:
           </p>
           <div className="contact-social">
             <a href="https://t.me/+_SccRhgFnJ81ZTQy" target="_blank" rel="noopener noreferrer" className="social-link">
